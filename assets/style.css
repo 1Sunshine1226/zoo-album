@@ -1,0 +1,137 @@
+/* 广州动物园 · 动物相册 共享样式 */
+:root{
+  --bg:#0d1512; --panel:#15221c; --ink:#eaf1ec; --muted:#9fb3a6;
+  --accent:#e3a15c; --grass:#7fb069; --line:rgba(234,241,236,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+  font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration:none;}
+img{display:block; max-width:100%;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 18px;}
+
+/* 顶栏 */
+.topbar{
+  position:sticky; top:0; z-index:20; background:rgba(13,21,18,.92);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:56px;}
+.brand{font-weight:700; letter-spacing:.5px;}
+.brand em{color:var(--accent); font-style:normal;}
+.back-home{
+  display:inline-flex; align-items:center; gap:6px; color:var(--ink);
+  font-size:14px; padding:6px 12px; border:1px solid var(--line); border-radius:999px;
+}
+.back-home:hover{border-color:var(--accent); color:var(--accent);}
+
+/* Hero */
+.hero{position:relative; margin-bottom:28px;}
+.hero img{width:100%; height:340px; object-fit:cover; border-radius:14px;}
+.hero .veil{
+  position:absolute; inset:0; border-radius:14px;
+  background:linear-gradient(180deg, rgba(13,21,18,.05) 30%, rgba(13,21,18,.88) 100%);
+}
+.hero .cap{position:absolute; left:26px; bottom:20px; right:26px;}
+.hero h1{margin:0 0 6px; font-size:30px; line-height:1.25;}
+.hero p{margin:0; color:var(--muted); font-size:14px; max-width:62ch;}
+
+/* 简介 */
+.intro{
+  background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:18px 20px; margin-bottom:30px; color:var(--muted);
+}
+.intro strong{color:var(--ink);}
+.stats{display:flex; flex-wrap:wrap; gap:18px; margin-top:10px;}
+.stats b{color:var(--accent); font-size:20px; margin-right:4px;}
+
+/* 区块标题 */
+.sec-title{font-size:20px; margin:0 0 16px; display:flex; align-items:baseline; gap:10px;}
+.sec-title small{color:var(--muted); font-size:13px; font-weight:400;}
+
+/* 品种卡片网格 */
+.cards{display:grid; grid-template-columns:repeat(1,1fr); gap:14px; margin-bottom:36px;}
+@media (min-width:560px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:900px){.cards{grid-template-columns:repeat(3,1fr);}}
+@media (min-width:1200px){.cards{grid-template-columns:repeat(4,1fr);}}
+.card{
+  position:relative; display:block; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line); background:var(--panel); aspect-ratio:4/3;
+}
+.card img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease;}
+.card:hover img{transform:scale(1.05);}
+.card .ov{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+  padding:12px 14px; background:linear-gradient(180deg, rgba(13,21,18,0) 40%, rgba(13,21,18,.9) 100%);
+}
+.card .name{color:var(--ink); font-size:17px; font-weight:700;}
+.card .cnt{color:var(--muted); font-size:12px;}
+
+/* 品种页照片网格 */
+.photo-head{margin:22px 0 18px;}
+.photo-head h1{margin:0 0 4px; font-size:26px;}
+.photo-head .meta{color:var(--muted); font-size:14px;}
+.grid{display:grid; grid-template-columns:repeat(1,1fr); gap:12px; margin-bottom:36px;}
+@media (min-width:560px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr);}}
+@media (min-width:1200px){.grid{grid-template-columns:repeat(4,1fr);}}
+.tile{
+  border-radius:10px; overflow:hidden; border:1px solid var(--line);
+  background:var(--panel); aspect-ratio:3/4; cursor:zoom-in; padding:0;
+}
+.tile img{width:100%; height:100%; object-fit:cover; transition:transform .3s ease;}
+.tile:hover img{transform:scale(1.04);}
+
+/* 底部品种导航 */
+.navbox{
+  border-top:1px solid var(--line); padding:22px 0; margin-top:10px;
+}
+.navbox h3{margin:0 0 12px; font-size:15px; color:var(--muted); font-weight:400;}
+.navscroll{display:flex; flex-wrap:wrap; gap:8px;}
+.navscroll a{
+  font-size:13px; padding:5px 11px; border-radius:999px;
+  border:1px solid var(--line); color:var(--ink); background:var(--panel);
+}
+.navscroll a:hover{border-color:var(--accent); color:var(--accent);}
+.navscroll a.cur, .navscroll span.cur{
+  border-color:var(--grass); color:var(--grass); cursor:default;
+  display:inline-block; font-size:13px; padding:5px 11px; border-radius:999px;
+  background:var(--panel);
+}
+
+footer.site{
+  border-top:1px solid var(--line); padding:18px 0 30px;
+  color:var(--muted); font-size:13px; text-align:center;
+}
+
+/* Lightbox */
+.lb{
+  position:fixed; inset:0; z-index:50; background:rgba(5,9,7,.96);
+  display:flex; align-items:center; justify-content:center;
+}
+.lb[hidden]{display:none;}
+.lb img{max-width:92vw; max-height:88vh; border-radius:6px; box-shadow:0 10px 40px rgba(0,0,0,.5);}
+.lb-btn{
+  position:absolute; background:rgba(21,34,28,.7); border:1px solid var(--line);
+  color:var(--ink); width:46px; height:46px; border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.lb-btn:hover{border-color:var(--accent); color:var(--accent);}
+.lb-close{top:18px; right:18px;}
+.lb-prev{left:16px; top:50%; transform:translateY(-50%);}
+.lb-next{right:16px; top:50%; transform:translateY(-50%);}
+.lb-count{
+  position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+  color:var(--ink); font-size:14px; letter-spacing:1px;
+  background:rgba(21,34,28,.7); padding:4px 14px; border-radius:999px; border:1px solid var(--line);
+}
+.lb-btn svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+
+@media (max-width:560px){
+  .hero img{height:220px;}
+  .hero h1{font-size:23px;}
+  body{font-size:14px;}
+}
